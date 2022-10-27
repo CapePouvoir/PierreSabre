@@ -38,8 +38,22 @@ public class Humain {
 	 * L'humain peut boire sa boisson favorite
 	 */
 	public void boire () {
-		parler ("Ahhh, un bon verre de " + boisson +" ! GLOUPS!");
+		parler ("Mmmh, un bon verre de " + boisson +" ! GLOUPS!");
 	}
+	
+	/**
+	 * L'humain achète un bien à un prix
+	 */
+	public void acheter( String bien, int prix) {
+		if (getArgent() > prix) {
+			parler ("J'ai " + argent +" sous en poche. Je vais pouvoir m'offrir un " + bien +" à " + prix + " sous.");
+			perdreArgent(prix);
+		}
+		else {
+			parler ("Je n'ai plus que " + argent +" sous en poche. Je ne peux même pas m'offrir un " + bien +" à " + prix + " sous.");
+		}
+	}
+	
 	
 	public String getNom() {
 		return nom_humain;
@@ -52,14 +66,16 @@ public class Humain {
 	public String getBoisson() {
 		return boisson;
 	}	
-		
-	public void ajouterArgent(int montant) {
-		argent= argent + montant; 
+	
+	
+	
+	public void ajouterArgent(int gain) {
+		argent= argent + gain; 
 	}
 	
-	public void perdreArgent(int montant) {
-		if (getArgent() >= montant) {
-			argent= argent - montant;
+	public void perdreArgent(int perte) {
+		if (getArgent() >= perte) {
+			argent= argent - perte;
 		}		
 	}
 	
